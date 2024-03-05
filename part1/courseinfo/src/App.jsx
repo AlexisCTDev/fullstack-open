@@ -6,11 +6,8 @@ const Part = (props) => (
   <>
     <h2>{props.part.name}</h2>
     <p>
-      There are{' '}
-      <u>
-        <b>{props.part.exercises}</b>
-      </u>{' '}
-      exercises in this part of the course.
+      There are <strong>{props.part.exercises}</strong> exercises in this part
+      of the course.
     </p>
   </>
 )
@@ -28,17 +25,11 @@ const Total = (props) => {
     props.parts[0].exercises +
     props.parts[1].exercises +
     props.parts[2].exercises
-  // props.parts.forEach(part => {
-  //   total += part.exercises;
-  // })
+
   return (
     <>
       <p>
-        There are{' '}
-        <u>
-          <b>{total}</b>
-        </u>{' '}
-        exercises in total.
+        There are <strong>{total}</strong> exercises in total.
       </p>
     </>
   )
