@@ -14,6 +14,10 @@ function Person({ person, handleDeletePerson }) {
 }
 
 export default function Persons({ persons, handleDeletePerson }) {
+  if (!persons || persons.length === 0) {
+    return <p>There is no data.</p>
+  }
+
   return (
     <ul>
       {persons.map((person) => (

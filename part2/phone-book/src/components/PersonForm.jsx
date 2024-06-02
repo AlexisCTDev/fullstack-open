@@ -9,7 +9,7 @@ export default function PersonForm({
     <section>
       <form onSubmit={handleSubmit}>
         <label>
-          name:
+          Name:
           <input
             type='text'
             value={nameValue}

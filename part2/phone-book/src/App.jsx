@@ -68,9 +68,9 @@ export default function App() {
             setNotification(null)
           }, 3500)
         })
-        .catch(() => {
+        .catch((error) => {
           setNotification({
-            message: `Information of ${newPersonObject.name} has already been removed from server`,
+            message: `${error.response.data.error}`,
             type: 'error',
           })
           setTimeout(() => {
@@ -81,16 +81,27 @@ export default function App() {
       return
     }
 
-    personsService.create(newPersonObject).then((returnedPerson) => {
-      setPersons(persons.concat(returnedPerson))
-      setNotification({
-        message: `Added ${newPersonObject.name}`,
-        type: 'successful',
+    personsService
+      .create(newPersonObject)
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson))
+        setNotification({
+          message: `Added ${newPersonObject.name}`,
+          type: 'successful',
+        })
+        setTimeout(() => {
+          setNotification(null)
+        }, 3500)
       })
-      setTimeout(() => {
-        setNotification(null)
-      }, 3500)
-    })
+      .catch((error) => {
+        setNotification({
+          message: error.response.data.error,
+          type: 'error',
+        })
+        setTimeout(() => {
+          setNotification(null)
+        }, 3500)
+      })
 
     setNewName('')
     setNewNumber('')
@@ -118,6 +129,9 @@ export default function App() {
         setTimeout(() => {
           setNotification(null)
         }, 3500)
+      })
+      .catch((error) => {
+        console.error(error.message)
       })
   }
 
