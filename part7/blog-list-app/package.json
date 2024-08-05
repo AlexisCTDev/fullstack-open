@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "lint": "npx prettier . --write && standard --fix"
+  },
+  "devDependencies": {
+    "prettier": "3.3.3",
+    "standard": "17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
